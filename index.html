@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TravelBooker – Explore. Book. Go.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="logo" onclick="navigate('home')" role="button" tabindex="0" aria-label="Go to homepage">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+      </svg>
+    </div>
+    <span class="logo-text">Travel<span>Booker</span></span>
+  </div>
+  <div class="nav-links">
+    <button class="nav-link active" onclick="navigate('home')">Home</button>
+    <button class="nav-link" onclick="navigate('packages')">Packages</button>
+    <button class="nav-link" onclick="navigate('login')">Login</button>
+    <button class="nav-link" onclick="navigate('dashboard')">Dashboard</button>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════
+     PAGE: HOME
+════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-pattern"></div>
+    <div class="hero-img"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">AI-Powered Travel Planning</div>
+      <h1>Discover Your Next <em>Adventure</em></h1>
+      <p>Plan, book, and manage your dream journeys with intelligent tools, real-time pricing, and group coordination — all in one place.</p>
+      <div class="hero-cta">
+        <button class="btn btn-white" onclick="navigate('packages')">Explore Packages</button>
+        <button class="btn btn-ghost" onclick="openAI()">Ask AI Assistant</button>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">4,200+</div><div class="lbl">Tour Packages</div></div>
+      <div class="hero-stat"><div class="num">180+</div><div class="lbl">Destinations</div></div>
+      <div class="hero-stat"><div class="num">98k+</div><div class="lbl">Happy Travelers</div></div>
+    </div>
+    <div class="search-bar">
+      <div class="search-field">
+        <label for="searchDest">Destination</label>
+        <input type="text" id="searchDest" placeholder="Where do you want to go?" />
+      </div>
+      <div class="search-divider"></div>
+      <div class="search-field">
+        <label for="searchIn">Check In</label>
+        <input type="date" id="searchIn" />
+      </div>
+      <div class="search-divider"></div>
+      <div class="search-field">
+        <label for="searchOut">Check Out</label>
+        <input type="date" id="searchOut" />
+      </div>
+      <div class="search-divider"></div>
+      <div class="search-field">
+        <label for="searchNum">Travelers</label>
+        <input type="number" id="searchNum" min="1" max="200" placeholder="2" />
+      </div>
+      <button class="btn btn-primary" onclick="doSearch()">Search</button>
+    </div>
+  </section>
+
+  <div class="hero-spacer"></div>
+
+  <!-- Featured Packages -->
+  <section class="section bg-offwhite">
+    <div class="section-header">
+      <div class="eyebrow">Top Picks</div>
+      <h2>Featured Packages</h2>
+      <p>Handpicked experiences by our expert travel curators for every type of traveler</p>
+    </div>
+    <div class="packages-grid" id="featuredGrid"></div>
+    <div class="section-cta">
+      <button class="btn btn-outline" onclick="navigate('packages')">View All Packages</button>
+    </div>
+  </section>
+
+  <!-- Why TravelBooker -->
+  <section class="section">
+    <div class="section-header">
+      <div class="eyebrow">Why Choose Us</div>
+      <h2>Travel Smarter</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+        </div>
+        <h4>AI Travel Assistant</h4>
+        <p>Get personalised itinerary suggestions and instant answers 24/7</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+        </div>
+        <h4>Group Planner</h4>
+        <p>Coordinate bookings for teams, families, and large groups effortlessly</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+        </div>
+        <h4>Smart Budget Tracker</h4>
+        <p>Monitor spending in real-time with detailed cost breakdowns</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+        </div>
+        <h4>Corporate Tools</h4>
+        <p>Approval workflows, invoices, and employee booking management</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="main-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo footer-logo" onclick="navigate('home')">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+          </div>
+          <span class="logo-text footer-logo-text">Travel<span>Booker</span></span>
+        </div>
+        <p>Your AI-powered travel companion for unforgettable journeys around the world.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Twitter/X">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#" onclick="navigate('info-about');return false;">About Us</a></li>
+          <li><a href="#" onclick="navigate('info-careers');return false;">Careers</a></li>
+          <li><a href="#" onclick="navigate('info-contact');return false;">Contact</a></li>
+          <li><a href="#" onclick="navigate('info-press');return false;">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="#" onclick="navigate('info-help');return false;">Help Center</a></li>
+          <li><a href="#" onclick="navigate('info-faq');return false;">FAQs</a></li>
+          <li><a href="#" onclick="navigate('info-cancel');return false;">Cancellation Policy</a></li>
+          <li><a href="#" onclick="navigate('info-chat');return false;">Live Chat</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="#" onclick="navigate('info-destinations');return false;">Destinations</a></li>
+          <li><a href="#" onclick="navigate('packages');return false;">Travel Packages</a></li>
+          <li><a href="#" onclick="navigate('info-deals');return false;">Deals</a></li>
+          <li><a href="#" onclick="navigate('info-guides');return false;">Guides</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="newsletter-wrap">
+      <div class="newsletter-text">
+        <h5>Stay in the loop</h5>
+        <p>Get exclusive deals and travel inspiration to your inbox</p>
+      </div>
+      <div class="newsletter-form">
+        <input type="email" placeholder="your@email.com" aria-label="Email address" />
+        <button class="btn btn-primary btn-sm" onclick="handleNewsletter()">Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>2025 TravelBooker. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#" onclick="navigate('legal');return false;">Privacy Policy</a>
+        <a href="#" onclick="navigate('legal');return false;">Terms &amp; Conditions</a>
+        <a href="#" onclick="navigate('legal');return false;">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE: PACKAGES
+════════════════════════════════════════ -->
+<div class="page" id="page-packages">
+  <div class="page-hero-bar">
+    <div class="page-hero-bar-inner">
+      <button class="back-btn light" onclick="navigate('home')">Back to Home</button>
+      <div>
+        <h2>Tour Packages</h2>
+        <p>Explore <span id="pkgCount">24</span> curated experiences worldwide</p>
+      </div>
+    </div>
+  </div>
+  <div class="filters-bar">
+    <div class="filter-group">
+      <label for="filterDest">Destination</label>
+      <select id="filterDest" onchange="filterPackages()">
+        <option value="">All Destinations</option>
+        <option value="Asia">Asia</option>
+        <option value="Europe">Europe</option>
+        <option value="Americas">Americas</option>
+        <option value="Africa">Africa</option>
+        <option value="Oceania">Oceania</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="filterDur">Duration</label>
+      <select id="filterDur" onchange="filterPackages()">
+        <option value="">Any Duration</option>
+        <option value="short">1 - 5 days</option>
+        <option value="medium">6 - 10 days</option>
+        <option value="long">11+ days</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="filterBudget">Max Budget (USD)</label>
+      <input type="number" id="filterBudget" placeholder="5000" oninput="filterPackages()" />
+    </div>
+    <div class="filter-group">
+      <label for="filterSort">Sort By</label>
+      <select id="filterSort" onchange="filterPackages()">
+        <option value="featured">Featured</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="duration">Duration</option>
+        <option value="rating">Rating</option>
+      </select>
+    </div>
+    <div class="filter-actions">
+      <button class="btn btn-sm btn-outline" id="compareBtn" onclick="runCompare()" style="display:none;">Compare (<span id="compareCnt">0</span>)</button>
+      <button class="btn btn-sm btn-ghost-dark" onclick="clearFilters()">Clear Filters</button>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="packages-grid" id="pkgGrid"></div>
+  </div>
+  <footer class="footer-mini">
+    <span>2025 TravelBooker</span>
+    <div><a href="#" onclick="navigate('legal');return false;">Privacy</a> · <a href="#" onclick="navigate('legal');return false;">Terms</a> · <a href="#" onclick="navigate('info-help');return false;">Help</a></div>
+  </footer>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE: PACKAGE DETAIL
+════════════════════════════════════════ -->
+<div class="page" id="page-detail">
+  <div class="detail-hero">
+    <img id="detailHeroImg" src="" alt="Package hero image" />
+    <div class="detail-hero-overlay"></div>
+    <div class="detail-hero-content">
+      <div class="chip-row">
+        <span class="tag" id="detailRegion"></span>
+        <span class="tag" id="detailDurTag"></span>
+      </div>
+      <h1 id="detailTitle"></h1>
+      <div class="detail-meta">
+        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span id="detailRating"></span>
+        <span class="dot">·</span>
+        <span id="detailReviews"></span>
+      </div>
+    </div>
+  </div>
+  <div class="detail-action-bar">
+    <button class="back-btn" onclick="navigate('packages')">Back to Packages</button>
+    <div class="detail-action-right">
+      <button class="btn btn-sm btn-outline" onclick="addToCompare(currentPkg)">Add to Compare</button>
+      <button class="btn btn-sm btn-primary" onclick="navigate('booking')">Book Now</button>
+    </div>
+  </div>
+  <div class="detail-body" id="detailBody">
+    <div class="detail-main">
+      <div class="detail-tabs">
+        <button class="tab-btn active" data-tab="overview" onclick="showTab(this, 'overview')">Overview</button>
+        <button class="tab-btn" data-tab="itinerary" onclick="showTab(this, 'itinerary')">Itinerary</button>
+        <button class="tab-btn" data-tab="pricing" onclick="showTab(this, 'pricing')">Pricing</button>
+        <button class="tab-btn" data-tab="reviews" onclick="showTab(this, 'reviews')">Reviews</button>
+      </div>
+      <div class="tab-pane active" id="tab-overview"></div>
+      <div class="tab-pane" id="tab-itinerary"></div>
+      <div class="tab-pane" id="tab-pricing"></div>
+      <div class="tab-pane" id="tab-reviews"></div>
+    </div>
+    <aside class="detail-sidebar">
+      <div class="booking-card" id="detailBookingCard"></div>
+    </aside>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE: BOOKING
+════════════════════════════════════════ -->
+<div class="page" id="page-booking">
+  <div class="booking-page-inner">
+    <button class="back-btn" onclick="navigate('detail')">Back to Package</button>
+    <div class="progress-steps" id="bookingSteps">
+      <div class="step active" id="step1"><div class="step-circle">1</div><div class="step-label">Travelers</div></div>
+      <div class="step" id="step2"><div class="step-circle">2</div><div class="step-label">Details</div></div>
+      <div class="step" id="step3"><div class="step-circle">3</div><div class="step-label">Payment</div></div>
+      <div class="step" id="step4"><div class="step-circle">4</div><div class="step-label">Confirm</div></div>
+    </div>
+    <!-- Step 1 -->
+    <div id="bookStep1">
+      <div class="form-card">
+        <h3>Traveler Setup</h3>
+        <div class="form-grid">
+          <div class="form-field">
+            <label>Package</label>
+            <input type="text" id="bkgPackage" readonly />
+          </div>
+          <div class="form-field">
+            <label for="bkgTravelers">Total Travelers</label>
+            <input type="number" id="bkgTravelers" min="1" max="200" value="2" oninput="updatePaymentSummary()" />
+          </div>
+          <div class="form-field">
+            <label for="bkgCheckin">Check-in Date</label>
+            <input type="date" id="bkgCheckin" />
+          </div>
+          <div class="form-field">
+            <label for="bkgCheckout">Check-out Date</label>
+            <input type="date" id="bkgCheckout" />
+          </div>
+          <div class="form-field full">
+            <label for="bkgGroupType">Booking Type</label>
+            <select id="bkgGroupType">
+              <option>Individual / Couple</option>
+              <option>Family Group</option>
+              <option>Corporate Group</option>
+              <option>Travel Agent Bulk</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-card">
+        <h3>Room Assignment <span class="room-note">Maximum 15 guests per room</span></h3>
+        <div id="roomsContainer"></div>
+        <button class="btn btn-outline btn-sm" onclick="addRoom()">Add Room</button>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" onclick="nextBookingStep(2)">Continue to Details</button>
+      </div>
+    </div>
+    <!-- Step 2 -->
+    <div id="bookStep2" class="hidden">
+      <div class="form-card">
+        <h3>Lead Traveler Details</h3>
+        <div class="form-grid">
+          <div class="form-field"><label>First Name</label><input type="text" placeholder="John" /></div>
+          <div class="form-field"><label>Last Name</label><input type="text" placeholder="Smith" /></div>
+          <div class="form-field"><label>Email Address</label><input type="email" placeholder="john@example.com" /></div>
+          <div class="form-field"><label>Phone Number</label><input type="tel" placeholder="+1 234 567 8900" /></div>
+          <div class="form-field"><label>Nationality</label>
+            <select>
+              <option>United States</option><option>United Kingdom</option><option>Australia</option>
+              <option>Canada</option><option>Germany</option><option>France</option><option>Other</option>
+            </select>
+          </div>
+          <div class="form-field"><label>Passport Number</label><input type="text" placeholder="AB123456" /></div>
+          <div class="form-field full"><label>Special Requests</label><textarea rows="3" placeholder="Dietary requirements, accessibility needs, room preferences..."></textarea></div>
+        </div>
+      </div>
+      <div class="form-actions space-between">
+        <button class="btn btn-outline" onclick="nextBookingStep(1)">Back</button>
+        <button class="btn btn-primary" onclick="nextBookingStep(3)">Continue to Payment</button>
+      </div>
+    </div>
+    <!-- Step 3 -->
+    <div id="bookStep3" class="hidden">
+      <div class="form-card">
+        <h3>Payment Details <span class="badge badge-green">Simulation Only</span></h3>
+        <div class="alert alert-warning">This is a prototype simulation. No real payment will be processed.</div>
+        <div class="pill-tabs" id="paymentTabs">
+          <button class="pill-tab active" onclick="switchPillTab(this, 'paymentTabs')">Credit Card</button>
+          <button class="pill-tab" onclick="switchPillTab(this, 'paymentTabs')">Bank Transfer</button>
+          <button class="pill-tab" onclick="switchPillTab(this, 'paymentTabs')">Digital Wallet</button>
+        </div>
+        <div class="form-grid">
+          <div class="form-field full"><label>Cardholder Name</label><input type="text" placeholder="John Smith" /></div>
+          <div class="form-field full"><label>Card Number</label><input type="text" placeholder="•••• •••• •••• ••••" maxlength="19" /></div>
+          <div class="form-field"><label>Expiry Date</label><input type="text" placeholder="MM / YY" /></div>
+          <div class="form-field"><label>CVV</label><input type="text" placeholder="•••" maxlength="3" /></div>
+        </div>
+        <div class="pay-summary">
+          <div class="price-row"><span>Package price &times; <span id="payTravelers">2</span> travelers</span><span id="paySubtotal">$0</span></div>
+          <div class="price-row"><span>Taxes &amp; fees (12%)</span><span id="payTax">$0</span></div>
+          <div class="price-row total"><span>Total Amount</span><span id="payTotal">$0</span></div>
+        </div>
+      </div>
+      <div class="form-actions space-between">
+        <button class="btn btn-outline" onclick="nextBookingStep(2)">Back</button>
+        <button class="btn btn-primary" onclick="confirmBooking()">Confirm Booking</button>
+      </div>
+    </div>
+    <!-- Step 4: Confirmation -->
+    <div id="bookStep4" class="hidden">
+      <div class="confirmation-card">
+        <div class="confirm-check">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h2>Booking Confirmed</h2>
+        <p>Your adventure is officially booked</p>
+        <div class="confirm-ref" id="confirmRef">TB-2025-XXXXXX</div>
+        <p class="confirm-note">A confirmation has been sent to your email address</p>
+        <div class="confirm-actions">
+          <button class="btn btn-white" onclick="navigate('dashboard')">View Dashboard</button>
+          <button class="btn btn-ghost-confirm" onclick="navigate('packages')">Book Another Trip</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE: LOGIN
+════════════════════════════════════════ -->
+<div class="page" id="page-login">
+  <div class="login-page">
+    <div class="login-card">
+      <div class="login-logo" onclick="navigate('home')">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+        </div>
+        <span class="logo-text">Travel<span>Booker</span></span>
+      </div>
+      <h2>Welcome Back</h2>
+      <p>Access your account to manage bookings and more</p>
+      <div class="form-field" style="margin-bottom:24px;">
+        <label for="loginRole">Sign in as</label>
+        <select id="loginRole">
+          <option value="customer">Direct Customer</option>
+          <option value="agent">Travel Agent</option>
+          <option value="corporate">Corporate Partner</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+      <button class="btn btn-primary login-btn" onclick="doLogin()">Sign In</button>
+      <div class="login-note">Prototype mode: no credentials required</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE: DASHBOARD
+════════════════════════════════════════ -->
+<div class="page" id="page-dashboard">
+  <div class="dashboard-layout">
+    <aside class="sidebar" id="dashSidebar"></aside>
+    <main class="dash-content" id="dashContent"></main>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE: LEGAL (Privacy, Terms, Cookies)
+════════════════════════════════════════ -->
+<div class="page" id="page-legal">
+  <div class="info-page-wrap">
+    <button class="back-btn" onclick="navigate('home')">Back to Home</button>
+    <div class="legal-tabs pill-tabs" id="legalTabs" style="margin-bottom:36px;">
+      <button class="pill-tab active" onclick="showLegalSection('privacy', this)">Privacy Policy</button>
+      <button class="pill-tab" onclick="showLegalSection('terms', this)">Terms &amp; Conditions</button>
+      <button class="pill-tab" onclick="showLegalSection('cookies', this)">Cookie Policy</button>
+    </div>
+    <div id="legal-privacy" class="legal-section active-section">
+      <h2>Privacy Policy</h2>
+      <p class="legal-date">Last updated: January 15, 2025</p>
+      <div class="legal-body">
+        <h3>1. Introduction</h3>
+        <p>TravelBooker ("we", "us", or "our") is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our platform and services.</p>
+        <h3>2. Information We Collect</h3>
+        <p>We collect information you provide directly to us, including: name, email address, phone number, passport details, payment information, and travel preferences. We also collect information automatically, such as IP addresses, browser type, device information, and browsing patterns on our platform.</p>
+        <h3>3. How We Use Your Information</h3>
+        <p>We use collected information to: process and manage your bookings, send booking confirmations and travel updates, personalise your experience and recommend packages, improve our services and platform, comply with legal obligations, and prevent fraud and abuse.</p>
+        <h3>4. Information Sharing</h3>
+        <p>We do not sell your personal data. We share information only with: travel providers necessary to fulfil your booking, payment processors for secure transactions, service partners who assist in platform operations, and authorities when required by law.</p>
+        <h3>5. Data Retention</h3>
+        <p>We retain your personal data for as long as necessary to provide our services and comply with legal obligations. Booking records are retained for 7 years. You may request deletion of your account at any time.</p>
+        <h3>6. Your Rights</h3>
+        <p>You have the right to access, correct, or delete your personal data. You may also object to processing or request data portability. To exercise these rights, contact our Data Protection Officer at privacy@travelbooker.com.</p>
+        <h3>7. Security</h3>
+        <p>We implement industry-standard security measures including SSL encryption, secure data storage, and regular security audits to protect your information.</p>
+        <h3>8. Contact Us</h3>
+        <p>For privacy-related questions, contact: privacy@travelbooker.com or write to TravelBooker, 45 Green Lane, London, EC2A 4NE, United Kingdom.</p>
+      </div>
+    </div>
+    <div id="legal-terms" class="legal-section" style="display:none;">
+      <h2>Terms &amp; Conditions</h2>
+      <p class="legal-date">Last updated: January 15, 2025</p>
+      <div class="legal-body">
+        <h3>1. Acceptance of Terms</h3>
+        <p>By accessing or using TravelBooker's platform, you agree to be bound by these Terms and Conditions. If you do not agree, please do not use our services.</p>
+        <h3>2. Booking and Payments</h3>
+        <p>All bookings are subject to availability and confirmation. Prices are quoted in USD and are inclusive of stated fees. Payment is required at time of booking. We accept major credit cards, bank transfers, and selected digital wallets.</p>
+        <h3>3. Cancellations and Refunds</h3>
+        <p>Free cancellation is available up to 14 days before departure for most packages. Cancellations between 7 and 14 days before departure incur a 25% fee. Cancellations within 7 days of departure are non-refundable. Specific package terms may vary.</p>
+        <h3>4. Travel Documents</h3>
+        <p>You are responsible for ensuring you hold valid travel documents including passports and visas. TravelBooker is not liable for denied entry resulting from inadequate documentation.</p>
+        <h3>5. Changes to Bookings</h3>
+        <p>Date changes are permitted up to 30 days before departure, subject to availability and a $50 administration fee. Name changes are not permitted after booking confirmation.</p>
+        <h3>6. Limitation of Liability</h3>
+        <p>TravelBooker acts as an agent for travel providers. Our maximum liability to you in any circumstance shall not exceed the total amount paid for the relevant booking.</p>
+        <h3>7. Governing Law</h3>
+        <p>These Terms are governed by the laws of England and Wales. Disputes shall be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+      </div>
+    </div>
+    <div id="legal-cookies" class="legal-section" style="display:none;">
+      <h2>Cookie Policy</h2>
+      <p class="legal-date">Last updated: January 15, 2025</p>
+      <div class="legal-body">
+        <h3>1. What Are Cookies</h3>
+        <p>Cookies are small text files stored on your device when you visit our website. They help us provide a better experience by remembering your preferences and understanding how you use our platform.</p>
+        <h3>2. Types of Cookies We Use</h3>
+        <p><strong>Essential Cookies:</strong> Required for the platform to function. These include session cookies, authentication tokens, and security cookies. These cannot be disabled.</p>
+        <p><strong>Performance Cookies:</strong> Help us understand how visitors interact with our platform by collecting anonymous analytics data. We use these to improve performance and user experience.</p>
+        <p><strong>Functional Cookies:</strong> Remember your preferences such as language, currency, and saved searches to personalise your experience.</p>
+        <p><strong>Marketing Cookies:</strong> Used to deliver relevant advertisements and track campaign effectiveness. You may opt out of these cookies.</p>
+        <h3>3. Managing Cookies</h3>
+        <p>You can control cookies through your browser settings. Note that disabling certain cookies may affect platform functionality. To opt out of analytics cookies, visit our Cookie Preferences centre in your account settings.</p>
+        <h3>4. Third-Party Cookies</h3>
+        <p>We use trusted third-party services including Google Analytics, Stripe (payments), and Intercom (support chat) which may set their own cookies. Please review their respective privacy policies.</p>
+        <h3>5. Updates to This Policy</h3>
+        <p>We may update this Cookie Policy periodically. We will notify you of significant changes via email or a prominent notice on our platform.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE: INFO PAGES (About, Careers, etc.)
+════════════════════════════════════════ -->
+<div class="page" id="page-info">
+  <div class="info-page-wrap" id="infoContent"></div>
+</div>
+
+<!-- ════════════════════════════════════════
+     AI CHAT WIDGET
+════════════════════════════════════════ -->
+<button class="ai-fab" onclick="toggleAI()" title="AI Travel Assistant" aria-label="Open AI Travel Assistant">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+</button>
+<div class="ai-chat-panel" id="aiPanel">
+  <div class="ai-chat-header">
+    <div class="ai-avatar">AI</div>
+    <h4>AI Travel Assistant</h4>
+    <button onclick="toggleAI()" aria-label="Close chat">&#10005;</button>
+  </div>
+  <div class="ai-messages" id="aiMessages">
+    <div class="ai-msg bot"><div class="bubble">Hello! I am your AI travel assistant. Ask me about destinations, packages, visa requirements, budget planning, or anything travel-related.</div></div>
+  </div>
+  <div class="ai-input-area">
+    <input type="text" id="aiInput" placeholder="Ask me anything..." aria-label="Chat input" onkeydown="if(event.key==='Enter')sendAI()" />
+    <button onclick="sendAI()" aria-label="Send message">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- Compare Bar -->
+<div class="compare-bar" id="compareBar">
+  <span class="compare-label">Comparing:</span>
+  <div class="compare-items" id="compareItems"></div>
+  <button class="btn btn-primary btn-sm" onclick="runCompare()">Compare Now</button>
+  <button class="btn btn-sm btn-ghost-dark" onclick="clearCompare()">Clear</button>
+</div>
+
+<!-- Compare Modal -->
+<div class="modal-overlay" id="compareModal" onclick="closeCompareModal(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('compareModal').classList.remove('open')" aria-label="Close">&#10005;</button>
+    <h3>Package Comparison</h3>
+    <div id="compareContent" class="compare-table-wrap"></div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
