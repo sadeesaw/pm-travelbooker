@@ -138,32 +138,33 @@ const PACKAGES = [
   },
   {
     id: 5,
-    title: 'Patagonia Wilderness Trek',
-    region: 'Americas',
-    dest: 'Chile & Argentina',
-    duration: 15,
-    price: 3900,
-    rating: 4.7,
-    reviews: 76,
-    img: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=900&q=80',
-    badge: 'Adventure',
-    discount: { percentage: 10, validUntil: '2024-10-31', description: 'Adventure Savings' },
-    desc: 'Trek through the most spectacular wilderness on Earth — glaciers, granite towers, turquoise lakes, and condors overhead in the raw heart of Chilean and Argentine Patagonia.',
+    title: 'Sri Lanka Family Adventure',
+    region: 'Asia',
+    dest: 'Sri Lanka',
+    duration: 10,
+    price: 1850,
+    rating: 4.8,
+    reviews: 156,
+    img: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=900&q=80',
+    badge: 'Family Special',
+    desc: 'Explore ancient temples, wildlife safaris, and pristine beaches with family-friendly activities and child discounts.',
     includes: [
-      'Mountain lodge accommodation on trail', 'All meals during trek', 'Expert certified mountain guides',
-      'National park entrance fees', 'Bus transfers', 'Trekking equipment hire'
+      'Family accommodation', 'Child-friendly activities', 'Yala National Park safari',
+      'Sigiriya rock fortress', 'Beach resorts', 'Cultural shows'
     ],
-    highlights: ['Torres del Paine', 'Perito Moreno Glacier', 'Los Glaciares National Park', 'Fitz Roy massif'],
+    highlights: ['Yala Wildlife Safari', 'Sigiriya Rock', 'Temple of the Tooth', 'Colombo City Tour'],
     itinerary: [
-      { day: 'Days 1 to 2', title: 'Punta Arenas Arrival', desc: 'Arrive, gear check, briefing, overnight in Punta Arenas.' },
-      { day: 'Days 3 to 8', title: 'W Trek, Torres del Paine', desc: 'Classic W circuit: Valle del Francés, Grey Glacier, Las Torres. The most iconic trek in South America.' },
-      { day: 'Day 9', title: 'Perito Moreno Glacier', desc: 'Cross into Argentina, walk on the vast Perito Moreno glacier with crampons and a certified ice guide.' },
-      { day: 'Days 10 to 14', title: 'El Chaltén & Fitz Roy', desc: 'Hike to the base of Fitz Roy and Cerro Torre, two of the world\'s most dramatic peaks.' },
-      { day: 'Day 15', title: 'Departure', desc: 'Bus to El Calafate, flights to Buenos Aires or Santiago.' }
+      { day: 'Day 1', title: 'Colombo Arrival', desc: 'Welcome to Sri Lanka, transfer to hotel with family rooms.' },
+      { day: 'Day 2-3', title: 'Cultural Triangle', desc: 'Visit ancient cities, Sigiriya Rock, and Polonnaruwa.' },
+      { day: 'Day 4-5', title: 'Yala Safari', desc: 'Wildlife safari in Yala National Park, spot elephants and leopards.' },
+      { day: 'Day 6-7', title: 'Hill Country', desc: 'Tea plantations, Nuwara Eliya, and Ella Gap.' },
+      { day: 'Day 8-9', title: 'Beach Relaxation', desc: 'Unawatuna or Mirissa beaches, whale watching optional.' },
+      { day: 'Day 10', title: 'Departure', desc: 'Transfer to Colombo airport.' }
     ],
     reviewsList: [
-      { author: 'Ana R.', rating: 5, date: 'November 2024', text: 'Reaching the Torres at sunrise after a 4-hour predawn hike was worth every single step. Brutal, beautiful, and completely unforgettable.' },
-      { author: 'Hans K.', rating: 4, date: 'December 2024', text: 'Extraordinarily well-organised with exceptional mountain guides. Genuinely challenging — fitness preparation essential. Absolutely worth it.' }
+      { author: 'Family Smith', rating: 5, date: 'March 2025', text: 'Perfect family trip! The kids loved the safari and beaches. Great value with child discounts.' },
+      { author: 'Nimali Fernando', rating: 5, date: 'February 2025', text: 'As a Sri Lankan mother, I was proud to show my children our beautiful country. The family packages are well-designed.' },
+      { author: 'Raj & Priya Patel', rating: 4, date: 'January 2025', text: 'Great family adventure! The child discounts made it affordable. Yala safari was the highlight for our kids.' }
     ]
   },
   {
@@ -253,33 +254,32 @@ const PACKAGES = [
   },
   {
     id: 9,
-    title: 'Sri Lanka Family Adventure',
-    region: 'Asia',
-    dest: 'Sri Lanka',
-    duration: 10,
-    price: 1850,
-    rating: 4.8,
-    reviews: 156,
-    img: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=900&q=80',
-    badge: 'Family Special',
-    desc: 'Explore ancient temples, wildlife safaris, and pristine beaches with family-friendly activities and child discounts.',
+    title: 'Patagonia Wilderness Trek',
+    region: 'Americas',
+    dest: 'Chile & Argentina',
+    duration: 15,
+    price: 3900,
+    rating: 4.7,
+    reviews: 76,
+    img: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=900&q=80',
+    badge: 'Adventure',
+    discount: { percentage: 10, validUntil: '2024-10-31', description: 'Adventure Savings' },
+    desc: 'Trek through the most spectacular wilderness on Earth — glaciers, granite towers, turquoise lakes, and condors overhead in the raw heart of Chilean and Argentine Patagonia.',
     includes: [
-      'Family accommodation', 'Child-friendly activities', 'Yala National Park safari',
-      'Sigiriya rock fortress', 'Beach resorts', 'Cultural shows'
+      'Mountain lodge accommodation on trail', 'All meals during trek', 'Expert certified mountain guides',
+      'National park entrance fees', 'Bus transfers', 'Trekking equipment hire'
     ],
-    highlights: ['Yala Wildlife Safari', 'Sigiriya Rock', 'Temple of the Tooth', 'Colombo City Tour'],
+    highlights: ['Torres del Paine', 'Perito Moreno Glacier', 'Los Glaciares National Park', 'Fitz Roy massif'],
     itinerary: [
-      { day: 'Day 1', title: 'Colombo Arrival', desc: 'Welcome to Sri Lanka, transfer to hotel with family rooms.' },
-      { day: 'Day 2-3', title: 'Cultural Triangle', desc: 'Visit ancient cities, Sigiriya Rock, and Polonnaruwa.' },
-      { day: 'Day 4-5', title: 'Yala Safari', desc: 'Wildlife safari in Yala National Park, spot elephants and leopards.' },
-      { day: 'Day 6-7', title: 'Hill Country', desc: 'Tea plantations, Nuwara Eliya, and Ella Gap.' },
-      { day: 'Day 8-9', title: 'Beach Relaxation', desc: 'Unawatuna or Mirissa beaches, whale watching optional.' },
-      { day: 'Day 10', title: 'Departure', desc: 'Transfer to Colombo airport.' }
+      { day: 'Days 1 to 2', title: 'Punta Arenas Arrival', desc: 'Arrive, gear check, briefing, overnight in Punta Arenas.' },
+      { day: 'Days 3 to 8', title: 'W Trek, Torres del Paine', desc: 'Classic W circuit: Valle del Francés, Grey Glacier, Las Torres. The most iconic trek in South America.' },
+      { day: 'Day 9', title: 'Perito Moreno Glacier', desc: 'Cross into Argentina, walk on the vast Perito Moreno glacier with crampons and a certified ice guide.' },
+      { day: 'Days 10 to 14', title: 'El Chaltén & Fitz Roy', desc: 'Hike to the base of Fitz Roy and Cerro Torre, two of the world\'s most dramatic peaks.' },
+      { day: 'Day 15', title: 'Departure', desc: 'Bus to El Calafate, flights to Buenos Aires or Santiago.' }
     ],
     reviewsList: [
-      { author: 'Family Smith', rating: 5, date: 'March 2025', text: 'Perfect family trip! The kids loved the safari and beaches. Great value with child discounts.' },
-      { author: 'Nimali Fernando', rating: 5, date: 'February 2025', text: 'As a Sri Lankan mother, I was proud to show my children our beautiful country. The family packages are well-designed.' },
-      { author: 'Raj & Priya Patel', rating: 4, date: 'January 2025', text: 'Great family adventure! The child discounts made it affordable. Yala safari was the highlight for our kids.' }
+      { author: 'Ana R.', rating: 5, date: 'November 2024', text: 'Reaching the Torres at sunrise after a 4-hour predawn hike was worth every single step. Brutal, beautiful, and completely unforgettable.' },
+      { author: 'Hans K.', rating: 4, date: 'December 2024', text: 'Extraordinarily well-organised with exceptional mountain guides. Genuinely challenging — fitness preparation essential. Absolutely worth it.' }
     ]
   }
 ];
