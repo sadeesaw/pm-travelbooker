@@ -748,7 +748,7 @@ function renderPackages(list) {
   if (cnt) cnt.textContent = list.length;
 }
 
-function renderIndividualPackages(dest) {
+function renderIndividualPackages(dest, budget = Infinity) {
   let list = PACKAGES.filter(p => p.duration <= 10); // Shorter trips for individuals
   if (dest) {
     list = list.filter(p =>
@@ -757,11 +757,12 @@ function renderIndividualPackages(dest) {
       p.title.toLowerCase().includes(dest)
     );
   }
+  list = list.filter(p => p.price <= budget);
   const grid = document.getElementById('individualGrid');
   if (grid) grid.innerHTML = list.map(pkgCard).join('');
 }
 
-function renderFamilyPackages(dest) {
+function renderFamilyPackages(dest, budget = Infinity) {
   let list = PACKAGES.filter(p => p.duration <= 14); // Family-friendly durations
   if (dest) {
     list = list.filter(p =>
@@ -770,13 +771,14 @@ function renderFamilyPackages(dest) {
       p.title.toLowerCase().includes(dest)
     );
   }
+  list = list.filter(p => p.price <= budget);
   // Mark packages as family-friendly
   list = list.map(pkg => ({ ...pkg, familyFriendly: true, childDiscount: '20% off for children under 12' }));
   const grid = document.getElementById('familyGrid');
   if (grid) grid.innerHTML = list.map(pkg => pkgCard(pkg, true)).join(''); // Pass true for family mode
 }
 
-function renderGroupPackages(dest) {
+function renderGroupPackages(dest, budget = Infinity) {
   let list = PACKAGES.filter(p => p.price <= 3000); // More affordable for groups
   if (dest) {
     list = list.filter(p =>
@@ -785,6 +787,7 @@ function renderGroupPackages(dest) {
       p.title.toLowerCase().includes(dest)
     );
   }
+  list = list.filter(p => p.price <= budget);
   const grid = document.getElementById('groupGrid');
   if (grid) grid.innerHTML = list.map(pkgCard).join('');
 }
@@ -997,17 +1000,18 @@ function filterByDest(keyword) {
 function doSearch() {
   const dest = (document.getElementById('searchDest').value || '').toLowerCase().trim();
   const travelers = parseInt(document.getElementById('searchNum').value) || 1;
+  const budget = parseFloat(document.getElementById('searchBudget').value) || Infinity;
 
   // Redirect based on traveler count
   if (travelers === 1) {
     navigate('individual');
-    renderIndividualPackages(dest);
+    renderIndividualPackages(dest, budget);
   } else if (travelers >= 2 && travelers <= 10) {
     navigate('family');
-    renderFamilyPackages(dest);
+    renderFamilyPackages(dest, budget);
   } else {
     navigate('group');
-    renderGroupPackages(dest);
+    renderGroupPackages(dest, budget);
   }
 }
 
