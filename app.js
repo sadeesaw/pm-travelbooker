@@ -933,34 +933,128 @@ function renderInfoPage(sub) {
 function renderAbout() {
   return `
     <button class="back-btn" onclick="navigate('home')">Back to Home</button>
-    <div class="about-split">
-      <div class="about-text">
-        <h2>Where luxury meets local authenticity</h2>
-        <p>TravelBooker is a Sri Lanka-focused travel platform built for anyone exploring the island, from local weekend travellers to international guests booking domestic tours. We combine curated stays, trusted transport partners, and locally-led experiences into one clear booking flow.</p>
-        <p>Every itinerary in TravelBooker is designed around Sri Lanka's real strengths: cultural heritage, wildlife, beaches, wellness escapes, scenic rail journeys, and hill country stays. We work with local hotels, drivers, guides, and hosts to keep every booking grounded in the island.</p>
+    <div class="about-hero-card">
+      <div class="about-hero-copy">
+        <div class="about-kicker">Island-first luxury travel</div>
+        <h1>About TravelBooker</h1>
+        <p>We design colourful Sri Lanka journeys that feel seamless online and unforgettable in real life, blending boutique stays, local expertise, and smart planning into one polished booking experience.</p>
+        <div class="about-hero-actions">
+          <button class="btn btn-primary" onclick="navigate('packages')">Explore Packages</button>
+          <button class="btn btn-outline" onclick="navigate('hotels')">Browse Destinations</button>
+        </div>
       </div>
-      <div class="about-image"></div>
+      <div class="about-hero-visual">
+        <div class="about-glass-card accent-coral">
+          <span>Travel Promise</span>
+          <strong>Handpicked stays, smooth routes, and local experiences that feel easy to book.</strong>
+        </div>
+        <div class="about-glass-card accent-sky">
+          <span>Why Guests Choose Us</span>
+          <strong>Packages and destinations curated for couples, families, and premium island getaways.</strong>
+        </div>
+        <div class="about-orbit about-orbit-one"></div>
+        <div class="about-orbit about-orbit-two"></div>
+      </div>
     </div>
-    <div class="info-section">
-      <h3>Our Story</h3>
-      <p>TravelBooker was founded in 2026 by a small Sri Lankan team that wanted domestic trip planning to feel simpler, clearer, and more premium. Instead of sending travellers across dozens of disconnected websites, we brought packages, stays, transport, and support into one local-first platform.</p>
+    <div class="about-metrics-grid">
+      <div class="about-metric-card sunrise">
+        <div class="metric-value">98K+</div>
+        <div class="metric-label">Guest nights and trip enquiries supported</div>
+      </div>
+      <div class="about-metric-card lagoon">
+        <div class="metric-value">15+</div>
+        <div class="metric-label">Sri Lanka destinations actively curated by our team</div>
+      </div>
+      <div class="about-metric-card twilight">
+        <div class="metric-value">4.8/5</div>
+        <div class="metric-label">Average satisfaction score across completed bookings</div>
+      </div>
+      <div class="about-metric-card citrus">
+        <div class="metric-value">80%</div>
+        <div class="metric-label">Packages built with local accommodation and guide partners</div>
+      </div>
     </div>
-    <div class="info-section">
-      <h3>Our Values</h3>
-      <div class="info-grid">
-        <div class="info-card"><h4>Responsible Travel</h4><p>We partner exclusively with operators who adhere to sustainable tourism practices and fair pay for local guides.</p></div>
-        <div class="info-card"><h4>Radical Transparency</h4><p>No hidden fees. Every price reflects the local accommodation, transport, and activity inclusions shown in the trip.</p></div>
-        <div class="info-card"><h4>People First</h4><p>Our AI assists, but our expert human team is always available. Real people, real answers, any time.</p></div>
-        <div class="info-card"><h4>Local Impact</h4><p>Over 80% of our packages use local accommodation, guides, and transport partners wherever possible.</p></div>
+    <div class="about-story-grid">
+      <div class="about-story-panel">
+        <div class="story-eyebrow">Our Story</div>
+        <h2>Designed in Sri Lanka, not just about Sri Lanka</h2>
+        <p>TravelBooker was founded in 2026 by a small local team who wanted trip planning to feel more inspiring than spreadsheets and more trustworthy than scattered marketplace listings. We rebuilt the journey around clarity, confidence, and premium local detail.</p>
+        <p>That means travellers can move from discovery to booking with one connected flow, while still feeling the character of the island through every hotel, route, and experience we recommend.</p>
+      </div>
+      <div class="about-highlight-stack">
+        <div class="about-highlight-card">
+          <span class="highlight-index">01</span>
+          <h3>Curated by people on the ground</h3>
+          <p>Packages are reviewed with local insight, not copied from generic global inventory.</p>
+        </div>
+        <div class="about-highlight-card">
+          <span class="highlight-index">02</span>
+          <h3>Built for modern planning</h3>
+          <p>Compare, customise, and manage trips from one streamlined dashboard.</p>
+        </div>
+        <div class="about-highlight-card">
+          <span class="highlight-index">03</span>
+          <h3>Premium without feeling distant</h3>
+          <p>We mix concierge-like care with practical local knowledge and transparent pricing.</p>
+        </div>
       </div>
     </div>
     <div class="info-section">
-      <h3>By the Numbers</h3>
-      <div class="info-grid">
-        <div class="info-card"><h4>98,000+</h4><p>Guest nights and trip enquiries supported across Sri Lanka since launch</p></div>
-        <div class="info-card"><h4>15+</h4><p>Key Sri Lanka destinations and hotel zones actively supported on the platform</p></div>
-        <div class="info-card"><h4>11</h4><p>Active Sri Lanka package collections maintained by our local operations team</p></div>
-        <div class="info-card"><h4>4.8 / 5</h4><p>Average customer satisfaction rating across all completed bookings</p></div>
+      <h3>What Makes Us Different</h3>
+      <div class="about-experience-grid">
+        <div class="about-experience-card" onclick="showToast('Every package is designed around actual Sri Lanka travel rhythms and seasonality.')">
+          <div class="experience-icon">01</div>
+          <h4>Local-first curation</h4>
+          <p>Trips are shaped around monsoon patterns, regional culture, and realistic travel times.</p>
+        </div>
+        <div class="about-experience-card" onclick="showToast('Your dashboard keeps bookings, budget, and support in one place.')">
+          <div class="experience-icon">02</div>
+          <h4>Interactive planning tools</h4>
+          <p>Guests can compare routes, review inclusions, and track trips through one clean interface.</p>
+        </div>
+        <div class="about-experience-card" onclick="showToast('We prioritise transparent pricing and reliable service partners.')">
+          <div class="experience-icon">03</div>
+          <h4>Premium service standards</h4>
+          <p>Clear inclusions, responsive support, and trusted supplier relationships stay at the center.</p>
+        </div>
+      </div>
+    </div>
+    <div class="info-section">
+      <h3>Our Values In Motion</h3>
+      <div class="about-values-grid">
+        <div class="about-value-card">
+          <div class="value-chip">Responsible</div>
+          <h4>Travel that gives back</h4>
+          <p>We favour operators who support fair pay, lower-impact logistics, and long-term local partnerships.</p>
+        </div>
+        <div class="about-value-card">
+          <div class="value-chip">Transparent</div>
+          <h4>No mystery pricing</h4>
+          <p>Packages clearly show inclusions, accommodation, and support so guests know what they are buying.</p>
+        </div>
+        <div class="about-value-card">
+          <div class="value-chip">Human</div>
+          <h4>Technology with real backup</h4>
+          <p>AI helps speed things up, but travellers can still reach a real team when decisions matter.</p>
+        </div>
+        <div class="about-value-card">
+          <div class="value-chip">Expressive</div>
+          <h4>Trips with personality</h4>
+          <p>From surf escapes to tea-country rail journeys, we keep itineraries rich, specific, and memorable.</p>
+        </div>
+      </div>
+    </div>
+    <div class="info-section">
+      <h3>Start Your Next Trip</h3>
+      <div class="about-cta-panel">
+        <div>
+          <h4>Want a trip that feels more tailored?</h4>
+          <p>Jump into our most popular packages, explore destination collections, or head to the dashboard to manage your next booking.</p>
+        </div>
+        <div class="about-cta-actions">
+          <button class="btn btn-primary" onclick="navigate('packages')">See Packages</button>
+          <button class="btn btn-outline" onclick="navigate('dashboard')">Open Dashboard</button>
+        </div>
       </div>
     </div>`;
 }
